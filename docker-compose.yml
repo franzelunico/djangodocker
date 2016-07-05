@@ -1,8 +1,13 @@
+# crea una imagen de nombre    : dockerizingdjango_web
+# crea un contenedor de nombre : dockerizingdjango_web_1
+# para ejecutar un comando en el servicio web
 web:
   restart: always
   build: . # refecia al DockerFile
   ports:
-    - "8000:8000"
+    - "8000:8000" # puerto HOST:CONTAINER
   volumes:
     - .:/code
+  command: python manage.py makemigrations
+  command: python manage.py migrate
   command: python manage.py runserver 0.0.0.0:8000
