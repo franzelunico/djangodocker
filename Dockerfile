@@ -9,3 +9,4 @@ WORKDIR /code
 ADD . /code/
 RUN pip install --no-cache-dir -r requirements.txt
 WORKDIR /code/server
+RUN chmod ug+x initialize.sh
