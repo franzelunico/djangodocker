@@ -10,9 +10,8 @@ services:
         - "8079:8000" # puerto HOST:CONTAINER
       volumes:
         - .:/code
-      depends_on:
+      links:
         - db
-      command: python manage.py runserver 0.0.0.0:8000
     db:
       restart: always
       image: postgres
