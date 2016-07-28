@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '2'
+services:
+    web:
+      restart: always
+      build: . # refecia al DockerFile
+      ports:
+        - "8079:8000" # puerto HOST:CONTAINER
+      volumes:
+        - .:/code
+      links:
+        - db
+    db:
+      restart: always
+      image: postgres
+      ports:
+        - "5432:5432"
